@@ -56,20 +56,22 @@ namespace Evaluacion1erProgreso.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Email,Saldo,Activo,FechaCreacion")] Cliente cliente)
         {
+            var plan = new PlanDeRecompensas
+            {
+                Nombre = "Plan",
+                FechaCreacion = cliente.FechaCreacion,
+                Puntos = 0,
+                TipoDeRecompensa = "Silver"
+            };
+            
+            _context.PlanDeRecompensas.Add(plan);
+            await _context.SaveChangesAsync();
+
+            cliente.PlanDeRecompensasId = plan.PlanDeRecompensasId;
+            cliente.PlanDeRecompensas = plan;
 
             if (ModelState.IsValid)
             {
-                var plan = new PlanDeRecompensas
-                {
-                    Nombre = "Plan",
-                    FechaCreacion = cliente.FechaCreacion,
-                    Puntos = 0,
-                    TipoDeRecompensa = "Silver"
-                };
-                _context.PlanDeRecompensas.Add(plan);
-                await _context.SaveChangesAsync();
-
-                cliente.PlanDeRecompensasId = plan.PlanDeRecompensasId;
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
 
@@ -85,8 +87,8 @@ namespace Evaluacion1erProgreso.Controllers
             {
                 return NotFound();
             }
-
-            var cliente = await _context.Cliente.FindAsync(id);
+            var cliente = await _context.Cliente.Include(c => c.PlanDeRecompensas)
+                                        .FirstOrDefaultAsync(c => c.Id == id);
             if (cliente == null)
             {
                 return NotFound();

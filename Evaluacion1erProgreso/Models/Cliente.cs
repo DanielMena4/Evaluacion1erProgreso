@@ -27,7 +27,7 @@ namespace Evaluacion1erProgreso.Models
         public int PlanDeRecompensasId { get; set; }
 
         [ForeignKey("PlanDeRecompensasId")]
-        public PlanDeRecompensas PlanDeRecompensas { get; set; }
+        public PlanDeRecompensas? PlanDeRecompensas { get; set; }
 
     }
 }

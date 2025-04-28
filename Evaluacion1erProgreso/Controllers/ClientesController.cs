@@ -56,10 +56,23 @@ namespace Evaluacion1erProgreso.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nombre,Email,Saldo,Activo,FechaCreacion")] Cliente cliente)
         {
+
             if (ModelState.IsValid)
             {
+                var plan = new PlanDeRecompensas
+                {
+                    Nombre = "Plan",
+                    FechaCreacion = cliente.FechaCreacion,
+                    Puntos = 0,
+                    TipoDeRecompensa = "Silver"
+                };
+                _context.PlanDeRecompensas.Add(plan);
+                await _context.SaveChangesAsync();
+
+                cliente.PlanDeRecompensasId = plan.PlanDeRecompensasId;
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             return View(cliente);

@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 namespace Evaluacion1erProgreso.Models
 {
     public class PlanDeRecompensas
     {
-        public int Id { get; set; }
+        [Key]
+        public int PlanDeRecompensasId { get; set; }
         public string Nombre { get; set; }
         public DateOnly FechaCreacion { get; set; }
         public int puntos { get; set; } 

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Evaluacion1erProgreso.Models
 {
@@ -20,7 +21,12 @@ namespace Evaluacion1erProgreso.Models
         [Required]
         [Display(Name ="Fecha de creación")]
         public DateOnly FechaCreacion { get; set; }
-        public ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();   
+        public ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();
+        
+        [Display(Name = "Plan de recompensas")]
+        public int PlanDeRecompensasId { get; set; }
+
+        [ForeignKey("PlanDeRecompensasId")]
         public PlanDeRecompensas PlanDeRecompensas { get; set; }
 
     }

@@ -101,13 +101,13 @@ namespace Evaluacion1erProgreso.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Email,Saldo,Activo,FechaCreacion")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Email,Saldo,Activo,FechaCreacion,PlanDeRecompensasId")] Cliente cliente)
         {
             if (id != cliente.Id)
             {
                 return NotFound();
             }
-
+            var plan = await _context.PlanDeRecompensas.FindAsync(cliente.PlanDeRecompensasId);
             if (ModelState.IsValid)
             {
                 try

@@ -7,9 +7,9 @@ namespace Evaluacion1erProgreso.Models
     {
         [Key]
         public int Id { get; set; }
-        public DateTime FechaDeCreacion { get; set; }
-        public DateTime FechaDeInicio { get; set; }
-        public DateTime FechaDeFin { get; set; }
+        public DateOnly FechaDeCreacion { get; set; }
+        public DateOnly FechaDeInicio { get; set; }
+        public DateOnly FechaDeFin { get; set; }
         public int Monto { get; set; }
         [ForeignKey("ClienteId")]
         public Cliente cliente { get; set; }

@@ -16,8 +16,12 @@ namespace Evaluacion1erProgreso.Models
         public decimal Saldo { get; set; }
         [Required]
         public bool Activo { get; set; }
-        public DateTime FechaCreacion { get; set; }
-        public IEnumerable<Reserva> Reservas { get; set; }
-        public PlanDeRecompensas PlanDeRecompensas;
+        [DataType(DataType.Date)]
+        [Required]
+        [Display(Name ="Fecha de creación")]
+        public DateOnly FechaCreacion { get; set; }
+        public ICollection<Reserva> Reservas { get; set; } = new List<Reserva>();   
+        public PlanDeRecompensas PlanDeRecompensas { get; set; }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿namespace Evaluacion1erProgreso.Models
+﻿using Microsoft.EntityFrameworkCore;
+namespace Evaluacion1erProgreso.Models
 {
     public class PlanDeRecompensas
     {

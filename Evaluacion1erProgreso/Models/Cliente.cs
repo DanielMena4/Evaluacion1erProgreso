@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Runtime.InteropServices;
 
 namespace Evaluacion1erProgreso.Models
 {
@@ -18,7 +17,7 @@ namespace Evaluacion1erProgreso.Models
         [Required]
         public bool Activo { get; set; }
         public DateTime FechaCreacion { get; set; }
-        public List<Reserva> Reservas { get; set; }
+        public IEnumerable<Reserva> Reservas { get; set; }
         public PlanDeRecompensas PlanDeRecompensas;
     }
 }

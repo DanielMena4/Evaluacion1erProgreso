@@ -13,12 +13,12 @@
         <label for="floatingTextarea">Infomación</label>
     </div>
     <div>
-        <button type="button" onclick="" class="btn btn-outline-info btn-lg">Info</button>
-        <script>
-            document.getElementById("floatingTextarea").addEventListener("click", function() {
-                alert("Mi nombre es Daniel Mena, mi hobbie es jugar videojuegos y el valor del campo de texto es: floatingTextArea");
-            });
-        </script>
-
+        <button type="button" onclick="cambiarTexto()" class="btn btn-outline-info btn-lg">Info</button>
     </div>
 </div>
+<script>
+
+    function cambiarTexto() {
+      document.getElementById("floatingTextarea").innerHTML = "Mi nombre es Daniel Mena, mi hobbie es jugar videojuegos y el valor del campo de texto es: floatingTextarea";
+    }
+</script>

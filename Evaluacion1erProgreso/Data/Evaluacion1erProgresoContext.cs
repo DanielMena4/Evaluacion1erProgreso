@@ -15,5 +15,7 @@ namespace Evaluacion1erProgreso.Data
         }
 
         public DbSet<Evaluacion1erProgreso.Models.Cliente> Cliente { get; set; } = default!;
+        public DbSet<Evaluacion1erProgreso.Models.Reserva> Reserva { get; set; } = default!;
+        public DbSet<Evaluacion1erProgreso.Models.PlanDeRecompensas> PlanDeRecompensas { get; set; } = default!;
     }
 }
